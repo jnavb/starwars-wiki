@@ -1,0 +1,8 @@
+ion-tab-bar {
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: 12px;
+}
+
+.tab--selected {
+  color: var(--color-selected);
+}

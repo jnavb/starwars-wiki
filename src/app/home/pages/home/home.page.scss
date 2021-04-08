@@ -1,0 +1,40 @@
+ion-row {
+  --ion-grid-column-padding: 0px;
+}
+
+ion-card {
+  margin: 10px;
+
+  ion-card-title {
+    font-size: 20px;
+  }
+}
+
+ion-slides {
+  margin-left: 8px;
+  ion-card {
+    max-height: 150px;
+
+    img {
+      max-height: 70px;
+    }
+  }
+  ion-slide {
+    width: auto;
+  }
+}
+
+.card {
+  &__main {
+    max-height: 200px;
+
+    ion-card-content {
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-height: 100px;
+    }
+  }
+}

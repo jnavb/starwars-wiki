@@ -1,0 +1,9 @@
+{
+  "prettier.configPath": ".prettierrc",
+  "editor.tabSize": 2,
+  "prettier.printWidth": 120,
+  "prettier.useTabs": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

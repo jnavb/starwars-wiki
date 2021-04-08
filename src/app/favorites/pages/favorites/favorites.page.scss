@@ -1,0 +1,16 @@
+.empty {
+  &__msg {
+    color: var(--ion-color-step-600);
+    margin-top: 50%;
+    text-align: center;
+  }
+
+  &__icon {
+    color: var(--ion-color-step-600);
+    margin-right: 50%;
+    margin-left: 50%;
+    font-size: 80px;
+    margin-top: 20px;
+    transform: translateX(calc(50% - 80px));
+  }
+}

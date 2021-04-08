@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ title$ | async }}</ion-title>
+    <ion-back-button
+      slot="start"
+      defaultHref="home"
+      [text]="backText$ | async"
+    ></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="error$ | async">
+    <h1>Oopsie, try again later</h1>
+  </ng-container>
+
+  <ng-container *ngIf="loading$ | async">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ng-container>
+
+  <ng-container *ngIf="view$ | async as view">
+    <!-- Main -->
+    <ion-card class="card-main">
+      <ion-card-header>
+        <ion-card-subtitle>{{ view.subtitle }}</ion-card-subtitle>
+        <ion-card-title>{{ view.title | titlecase }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <!-- Secondary -->
+    <ion-row class="secondary-cards">
+      <ion-col *ngIf="view.img" size="6">
+        <ion-card
+          class="card-profile"
+          [ngStyle]="{
+              'background-image': 'url(/assets/characters/' + view.img + ')'
+            }"
+        >
+          <div class="fabs">
+            <mizik-fab-love
+              icon="heart-outline"
+              closeIcon="heart"
+              color="danger"
+              [activated]="favorite$ | async"
+              (tap)="toggleFavorite(view)"
+            ></mizik-fab-love>
+            <mizik-fab-love icon="share-social"></mizik-fab-love>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col [size]="view.img ? 6 : 12">
+        <ion-card>
+          <ion-card-header>
+            <ng-container *ngFor="let info of view.info">
+              <ion-card-subtitle> {{ info.label }} </ion-card-subtitle>
+              <ion-card-subtitle
+                color="dark"
+                style="text-transform: capitalize"
+              >
+                {{ info.value }}
+              </ion-card-subtitle>
+            </ng-container>
+          </ion-card-header>
+          <div *ngIf="!view.img" class="fabs fabs--no-img">
+            <mizik-fab-love icon="share-social"></mizik-fab-love>
+            <mizik-fab-love
+              icon="heart-outline"
+              closeIcon="heart"
+              color="danger"
+              [activated]="favorite$ | async"
+              (tap)="toggleFavorite(view)"
+            ></mizik-fab-love>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Secondary Card -->
+    <ion-card
+      *ngIf="view.secondaryCard as secondaryCard"
+      class="card-secondary"
+    >
+      <ion-card-header>
+        <span>{{ secondaryCard.value }}</span>
+      </ion-card-header>
+    </ion-card>
+
+    <!-- Related Cards -->
+    <ion-list-header class="related">
+      <ion-label>Related</ion-label>
+    </ion-list-header>
+
+    <div class="card-related-box">
+      <ion-card
+        *ngFor="let related of view.related"
+        class="card-related"
+        (click)="onDetail({ id: related.id, entity: related.entity })"
+      >
+        <ion-card-header>
+          <div>
+            <ion-card-subtitle
+              >{{ related.subtitle | entityTitlecase:related.entity
+              }}</ion-card-subtitle
+            >
+            <ion-card-title
+              >{{ related.title | entityTitlecase:related.entity
+              }}</ion-card-title
+            >
+          </div>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </ng-container>
+</ion-content>

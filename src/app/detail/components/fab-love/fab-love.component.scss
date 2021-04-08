@@ -1,0 +1,14 @@
+:host {
+  --size: 60px;
+  display: block;
+}
+
+ion-fab,
+ion-fab-button {
+  position: initial;
+}
+
+ion-fab-button {
+  height: var(--size);
+  width: var(--size);
+}

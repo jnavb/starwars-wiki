@@ -1,0 +1,123 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Discover</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Discover</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar
+        placeholder="Planets, vehicles, species..."
+        inputmode="numeric"
+        debounce="500"
+        animated
+      >
+      </ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- First row -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="card__main" (click)="onEntityList(entities.FILMS)">
+          <ion-card-header>
+            <ion-card-subtitle>Episode VII, Epi...</ion-card-subtitle>
+            <ion-card-title>Movies</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/entities/movies.png" alt="movies" />
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="card__main" (click)="onEntityList(entities.PEOPLE)">
+          <ion-card-header>
+            <ion-card-subtitle>Yoda, Jar Jar...</ion-card-subtitle>
+            <ion-card-title>Characters</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/entities/people.png" alt="people" />
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <mizik-card-flip
+      *ngIf="trivia$ | async as trivia"
+      [view]="trivia"
+      [discover]="discover$ | async"
+      (front)="onFront()"
+      (repeat)="onPickAnother()"
+    ></mizik-card-flip>
+
+    <ion-slides pager="false" [options]="slideOpts">
+      <ion-slide>
+        <ion-card
+          style="margin-left: 0"
+          (click)="onEntityList(entities.SPECIES)"
+        >
+          <ion-card-header>
+            <ion-card-title>Species</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/entities/species.png" alt="species" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card (click)="onEntityList(entities.VEHICLES)">
+          <ion-card-header>
+            <ion-card-title>Vehicles</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/entities/vehicles.png" alt="vehicles" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card (click)="onEntityList(entities.STARSHIPS)">
+          <ion-card-header>
+            <ion-card-title>Starships</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/entities/starships.png" alt="starships" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card (click)="onEntityList(entities.PLANETS)">
+          <ion-card-header>
+            <ion-card-title>Planets</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/entities/planets.png" alt="planets" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Learn and Share</ion-card-subtitle>
+        <ion-card-title>¡Hundreds of entries!</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Look inside Star Wars database, find what you are looking for and share
+        it with your friends
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,10 @@
+mizik-tabs {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: calc(51px + env(safe-area-inset-bottom));
+}
+
+ion-router-outlet {
+  height: calc(100% - 51px - env(safe-area-inset-bottom));
+}

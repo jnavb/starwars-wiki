@@ -1,0 +1,19 @@
+<ion-tab-bar slot="bottom" [translucent]="true">
+  <ion-tab-button
+    tab="home"
+    [ngClass]="{'tab--selected': !(isPageInFavorites$ | async)}"
+    (click)="onHome()"
+  >
+    <ion-icon name="search"></ion-icon>
+    <ion-label>Search</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button
+    tab="favorites"
+    [ngClass]="{'tab--selected': isPageInFavorites$ | async}"
+    (click)="onFavorites()"
+  >
+    <ion-icon name="heart"></ion-icon>
+    <ion-label>Favorites</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

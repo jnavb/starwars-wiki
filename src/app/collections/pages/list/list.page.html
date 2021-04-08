@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ title$ | async }}</ion-title>
+    <ion-back-button
+      slot="start"
+      defaultHref="home"
+      [text]="backText$ | async"
+    ></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="error$ | async">
+    <h1>Oopsie, try again later</h1>
+  </ng-container>
+
+  <ng-container *ngIf="loading$ | async">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ng-container>
+
+  <ng-container *ngIf="(view$ | async) as view">
+    <ng-container *ngIf="view">
+      <ion-virtual-scroll
+        [items]="view"
+        approxItemHeight="72px"
+        threshold="1000px"
+      >
+        <app-item-list
+          *virtualItem="let item"
+          [view]="{
+          title: item.title | entityTitlecase:item.entity,
+          subtitle: item.subtitle
+        }"
+          (click)="onDetail(item.id)"
+          style="height: 72px"
+        ></app-item-list>
+      </ion-virtual-scroll>
+    </ng-container>
+  </ng-container>
+</ion-content>

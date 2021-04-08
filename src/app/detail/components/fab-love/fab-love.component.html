@@ -1,0 +1,10 @@
+<ion-fab (click)="onTap()" vertical="bottom" horizontal="end">
+  <ion-fab-button
+    [activated]="activated"
+    [closeIcon]="closeIcon"
+    [color]="color"
+  >
+    <ion-icon [name]="icon"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list *ngIf="closeIcon" side="top"> </ion-fab-list>
+</ion-fab>

@@ -1,0 +1,106 @@
+ion-list-header {
+  margin-top: 0;
+
+  ion-label {
+    margin-top: 0;
+  }
+}
+
+ion-row {
+  margin-left: 8px;
+  margin-right: 8px;
+
+  ion-col {
+    padding: 0;
+  }
+  ion-card {
+    margin: 10px;
+  }
+}
+
+ion-fab {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.card-profile {
+  height: 187px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.card-main {
+  margin-bottom: 16px;
+}
+
+.card-secondary {
+  span {
+    font-style: italic;
+  }
+}
+
+.card-related {
+  &-box &:first-of-type {
+    margin-top: 12px;
+  }
+
+  ion-card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ion-icon {
+    height: auto;
+    font-size: 30px;
+  }
+}
+
+.card-main {
+  position: relative;
+  overflow: visible;
+}
+
+mizik-fab-love {
+  --size: 40px;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.fabs {
+  position: absolute;
+  left: 8px;
+  bottom: -16px;
+  z-index: 9;
+  display: flex;
+
+  &--no-img {
+    left: initial;
+    bottom: initial;
+    right: 14px;
+    top: 12px;
+  }
+}
+
+.related {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: visible;
+  margin-top: 10px;
+
+  ion-label {
+    align-self: flex-end;
+  }
+}
+
+.secondary-cards {
+  position: relative;
+
+  ion-card {
+    overflow: visible;
+  }
+}
